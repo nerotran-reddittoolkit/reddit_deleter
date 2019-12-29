@@ -10,7 +10,7 @@ user = reddit.user.me()
 
 # Get the current time from utc
 current_time = time.time()
-days = 0
+days = 100
 seconds = days * 3600 * 24
 
 # Run a loop through the user's comments and delete any whose posted date exceeds the days provided
@@ -23,7 +23,7 @@ for id in user.comments.new(limit=None):
             fa.writelines("reddit.com" + comment.submission.permalink + "\t"
                          + comment.body.replace("\n", " ").encode("ascii", "replace").decode()
                           + "\t" + str(date.fromtimestamp(comment.created)) + "\n")
-        #comment.delete() # delete the comment
+        comment.delete() # delete the comment
 
 print()
 
@@ -38,5 +38,5 @@ for id in user.submissions.new(limit=None):
                          + "\t" + str(date.fromtimestamp(post.created)) +
                           "\t" + post.selftext.replace("\n", " ").encode("ascii", "replace").decode()
                           + "\n")
-        #post.delete() # delete the post
+        post.delete() # delete the post
 
