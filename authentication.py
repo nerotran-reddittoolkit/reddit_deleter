@@ -14,7 +14,7 @@ with open("myauth.reddit", "r") as file_read:
         for field in authentication:
             authentication[field] = file_read.readline().strip("\n")
 
-#initialize a reddit object
+# Initialize a reddit object
 reddit = praw.Reddit(client_id=authentication["client_id"],
                      client_secret=authentication["client_secret"],
                      username=authentication["username"],
